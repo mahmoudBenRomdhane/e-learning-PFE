@@ -1,0 +1,25 @@
+<img src="assets/3.jpg" alt="" />
+<div class="container" style="margin-top: 150px;">
+<div class="row">
+    <div class="col-sm-6" *ngFor="let item of forums_1_1">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Forum de discussion</h5>
+          <p class="card-text">{{item.contenu}}</p>
+          <a  class="btn btn-primary" (click)="details(item._id)">see Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-sm-6" *ngFor="let item of forums_1_2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Forum de discussion</h5>
+          <p class="card-text">{{item.contenu}}</p>
+          <a  class="btn btn-primary" (click)="details(item._id)">see Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

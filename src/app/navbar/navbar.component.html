@@ -1,0 +1,36 @@
+<header>
+  <svg class="icon-menu" (click)="sidebar()">
+    <use xlink:href="assets/icons.svg#icon-menu"></use>
+  </svg>
+  <ul>
+    <li>
+      <svg class="icon icon-education">
+        <use xlink:href="assets/icons.svg#icon-education"></use></svg>E-Learning
+    </li>
+    <li *ngIf="userIsAuthenticated">Home</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/courses">Courses</li>
+    <li *ngIf="userIsAuthenticated">Forum</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/quizes">Quiz</li>
+    <li *ngIf="userIsAuthenticated">About us</li>
+    <li *ngIf="!userIsAuthenticated">login</li>
+    <li *ngIf="userIsAuthenticated" (click)="onLogOut()" >logOut</li>
+  </ul>
+</header>
+<aside *ngIf="mobilenavbar">
+  <div class="background" (click)="sidebar()"></div>
+  <div class="sidebar" [class]="class">
+    <ul>
+      <li>
+        <svg class="icon icon-education">
+          <use xlink:href="assets/icons.svg#icon-education"></use></svg>E-Learning
+      </li>
+      <li>Home</li>
+      <li>Courses</li>
+      <li>Forum</li>
+      <li>Quiz</li>
+      <li>About us</li>
+      <li>login</li>
+      <li>register</li>
+    </ul>
+  </div>
+</aside>

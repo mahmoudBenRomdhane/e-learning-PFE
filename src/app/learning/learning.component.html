@@ -1,0 +1,13 @@
+<img  class="back"src="assets/11.jpg" alt="" />
+<div class="container" *ngIf="wait">
+  <div class="card" style="background-color: transparent; border: transparent; margin-left: 340px; margin-top: 140px;">
+    <h5 class="card-title" style="font-size: 100%; color: whitesmoke;">{{(currentChapter.chapitre_num)+1}}-{{currentChapter.nom}}</h5>
+<video   controls width="550" height="320" > 
+  <source  [src]="chapters[0].video">
+</video>
+<p class="card-text" style="color: whitesmoke;">{{currentChapter.document_text}}</p>
+</div>
+<a  class="btn btn-primary"  *ngIf="(currentChapter.chapitre_num)!==0" (click)="Previous()" style="width: 120px;  float: left;"   >Previous</a>
+<a  class="btn btn-primary" *ngIf="(currentChapter.chapitre_num)!==(chapters.length)-1" (click)="next()"  style="width: 120px ; float: right;"  >Next</a>
+</div>
+

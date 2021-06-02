@@ -1,0 +1,13 @@
+<img src="assets/1.jpg" alt="" />
+<div class="testbox" style="margin-top: 200px;">
+    <h1>LOG IN</h1>
+    <form>
+          <div style="display: grid;"> 
+          <input type="text" name="Email"  style="margin-top: 40px;" ngModel  #Email="ngModel" placeholder="Email" email required/>
+          <input type="password" name="password" #password="ngModel"  ngModel placeholder="Password" />
+        </div>
+        <button type="submit"  (click)="aas()"  class="btn btn-primary">Register</button>
+        <hr>
+        <p>not a member yet : <a href="#">sign In</a></p>
+    </form>
+</div>

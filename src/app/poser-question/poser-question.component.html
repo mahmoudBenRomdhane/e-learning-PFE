@@ -1,0 +1,12 @@
+<img  class="back"src="assets/11.jpg" alt="" />
+<div class="container">
+<div class="input-group" style="margin-top: 100px;">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Your Question ?  </span>
+    </div>
+    <textarea class="form-control" style="height: 400PX;" [(ngModel)]="contenu" aria-label="With textarea"></textarea>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="addQuestion()">Post</button>
+  <small *ngIf="validation" style="margin-left: 100px; color: red;">you can 't send an empty question</small>
+  
+</div>

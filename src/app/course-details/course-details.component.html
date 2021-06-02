@@ -1,0 +1,38 @@
+<img  class="back"src="assets/11.jpg" alt="" />
+<div class="body">
+<div class="grid">
+    <div class="grid-item">
+      <div class="card">
+        <img class="card-img" src="{{course.image}}" alt="Rome" />
+        <div class="card-content">
+          <h1 class="card-header">{{course.nom}}</h1>
+          <p class="card-text">
+            Speciality: <strong>{{course.Speciality}}</strong>,
+            <br>
+            difficulty : <strong>{{course.difficulty}}</strong>
+            <br>
+            {{course.descrption_text}}
+            <br>
+            Teacher : <strong>{{responsable.nom}}  {{responsable.prenom}} </strong> <a href="#">see Profile</a>
+          </p>
+          <button class="card-btn" (click)="startLearning(course._id)">Start Learning <span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+        <div class="grid-item">
+          <div class="card">
+            <img class="card-img" src="{{course.image}}" alt="Rome" />
+            <div class="card-content">
+              <h1 class="card-header">{{responsable.nom}}  {{responsable.prenom}}</h1>
+              <p class="card-text">
+                Email: <strong>{{responsable.email}}</strong>,
+                <br>
+                Courses : <strong *ngFor="let item of responsableCourses">{{item.nom}}, </strong>
+                <br>
+                quiz :  <strong *ngFor="let item of responsabalequiz">{{item.name}}, </strong> <strong *ngIf="responsabalequiz.length===0">None</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+</div>
