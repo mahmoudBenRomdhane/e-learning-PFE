@@ -10,6 +10,9 @@ export class ApprenantService {
   private token: string  
   private authStatusListener = new Subject<boolean>()
   isAuthenticated=false
+  app : any = {
+    date_Forfait : Date
+  }
   constructor(private http : HttpClient , private router : Router) { }
   getToken(){
     return this.token
@@ -24,7 +27,7 @@ export class ApprenantService {
     return this.userId
   }
   addApprenant(data:any){
-    return this.http.post('http://localhost:3000/addapprenant',data)
+    return this.http.post<{_id : string}>('http://localhost:3000/addapprenant',data)
   }
   getEmails(){
     return this.http.get('http://localhost:3000/getEmails')
@@ -33,20 +36,19 @@ export class ApprenantService {
     return this.http.get('http://localhost:3000/getApprenant/'+_id)
   }
   login(user : any){
-    this.http.post<{token : string , userId : string}>('http://localhost:3000/connectUser',user)
+    let auht ;
+    this.http.post<{token : string , userId : string , statusCode }>('http://localhost:3000/connectUser',user)
     .subscribe(res=>{
-      //console.log(res.token) 
-      this.token = res.token
-      this.userId = res.userId
-      this.isAuthenticated = true;
-      this.authStatusListener.next(true)
-      this.saveAuthData(this.token,this.userId)
-      console.log('t3ada')
-      this.router.navigate(['/'])
-      //console.log(this.token)
+      if(!res.statusCode){
+        this.token = res.token
+        this.userId = res.userId
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true)
+        this.saveAuthData(this.token,this.userId)
+        this.checkForfait()
+        this.router.navigate(['../'])
+      }
     })
-    
-    return true
   }
   logOut(){
     this.token = null ;
@@ -83,5 +85,38 @@ export class ApprenantService {
       token : token ,
       userId : userId
     }
+  }
+  setForfait(data){
+    return this.http.post('http://localhost:3000/setForfait',data)
+  }
+  getapprenants(){
+    return this.http.get('http://localhost:3000/apprenants')
+  }
+  deleteApprenant(_id){
+    return this.http.delete('http://localhost:3000/apprenant/'+_id)
+  }
+  checkForfait(){
+    this.getApprenant(this.userId)
+    .subscribe(resp=>{
+      this.app = resp ;
+      const df = new Date(this.app.date_Forfait)
+      if (df.getTime() < new Date().getTime()){
+        this.router.navigate(['/register/'+this.userId])
+        this.token = null ;
+        this.userId = null
+        this.isAuthenticated = false ;
+        this.authStatusListener.next(false);
+        this.clearAuthData()
+      }
+    })
+  }
+  getNotification(_id){
+    return this.http.get<[{_id : String}]>('http://localhost:3000/getNotification/'+_id)
+  }
+  deleteNotification(_id){
+    return this.http.delete('http://localhost:3000/deleteNotification/'+_id)
+  }
+  updateProfile(Data){
+    return this.http.post('http://localhost:3000/updateApprenatProfile',Data)
   }
 }

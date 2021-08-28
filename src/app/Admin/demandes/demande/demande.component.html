@@ -1,0 +1,21 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">specialite</th>
+            <th scope="col">telephone number</th>
+            <th scope="col">More Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of demandes">
+            <th scope="row">{{item.nom}} {{item.prenom}}</th>
+            <td>{{item.email}}</td>
+            <td>{{item.specialite}}</td>
+            <td>{{item.numTelephone}}</td>
+            <td><img src="../../../../assets/info.svg" role="button" (click)="details(item._id)" ></td>
+        </tbody>
+      </table>
+    </main>

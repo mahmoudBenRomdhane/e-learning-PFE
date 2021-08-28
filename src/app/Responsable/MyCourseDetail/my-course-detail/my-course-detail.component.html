@@ -1,0 +1,35 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Name</label>
+            <input type="text" class="form-control" value="{{course.nom}}" formControlName="name" placeholder="Name">
+          </div>
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="height: 70px;">text description</span>
+            </div>
+            <textarea class="form-control" value="{{course.descrption_text}}" formControlName="descrption_text" aria-label="With textarea"></textarea>
+          </div>
+          <br>
+          <div class="card" *ngFor="let item of chapters" width="200px" height="200px" >
+                <video width="200px" height="200px" controls>
+                    <source  src="{{item.video}}">
+                </video>
+                <div class="card-body">
+                    <p>{{item.nom}}</p>
+                    <a (click)="deleteChapter(item._id)" class="btn btn-primary">Delete</a>
+                </div>
+
+          </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" routerLink='../../'>Save Changes</button>
+      </form>
+      <br>
+      <br>
+      <hr>
+      <button type="submit" class="btn btn-primary">Ajouter Chapitre</button>
+</main>

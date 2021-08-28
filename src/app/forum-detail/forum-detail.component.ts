@@ -4,6 +4,7 @@ import { ForumService } from '../shared/forum.service';
 import {CommentaireService} from '../shared/commentaire.service'
 import * as moment from  'moment'
 import { ApprenantService } from '../shared/apprenant.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-forum-detail',
@@ -16,14 +17,14 @@ export class ForumDetailComponent implements OnInit {
   commentaire = '';
   new_commentaire ={
     contenu : '',
-    id_apprenant : '608d99e6beb87400203e2d50',
+    id_apprenant : this.Apprenantservice.getId(),
     id_sujet : this.route.snapshot.params['_id'] ,
     dateCommentaire : new Date()
   }
   commentaires : any = []
   error  = false ;
   apprenant : any
-  constructor(private Forumservice : ForumService , private route :ActivatedRoute, private Commentaireservice : CommentaireService , private Apprenantservice : ApprenantService) { }
+  constructor(private Forumservice : ForumService , private route :ActivatedRoute, private Commentaireservice : CommentaireService , private Apprenantservice : ApprenantService,private socket:Socket) { }
 
   ngOnInit(): void {
     const _id = this.route.snapshot.params['_id'];
@@ -39,7 +40,13 @@ export class ForumDetailComponent implements OnInit {
         console.log(this.apprenant)
       })
     })
-
+this.socket.on("newcomment",()=>{
+  this.getallcommentaire(_id)
+  console.log("refresh")
+})
+   this.getallcommentaire(_id)
+  }
+  getallcommentaire(_id){
     this.Commentaireservice.getCommentaires(_id)
     .subscribe(data=>{
       console.log(data)

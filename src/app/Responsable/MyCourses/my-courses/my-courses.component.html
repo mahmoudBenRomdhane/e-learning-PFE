@@ -1,0 +1,23 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Speciality</th>
+            <th scope="col">
+                difficulty</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of courses">
+                <th scope="row">{{item.nom}}  </th>
+                <td>{{item.Speciality}}</td>
+                <td>{{item.difficulty}}</td>
+                <td><img role="button"  (click)="course(item._id)" src="../../../../assets/settings.svg"></td>
+                <td><img role="button"  (click)="delete(item._id)" src="../../../../assets/delete.svg"></td>
+              </tr>
+            </tbody>
+          </table>
+</main>

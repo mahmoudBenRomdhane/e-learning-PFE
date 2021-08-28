@@ -1,0 +1,23 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">
+                username</th>
+            <th scope="col">account Date</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Students">
+            <th scope="row">{{item.nom}}  {{item.prenom}}</th>
+            <td>{{item.email}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.date_Forfait}}</td>
+            <td><img role="button" (click)="OnDelete(item._id)" src="../../../../assets/delete.svg"></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>

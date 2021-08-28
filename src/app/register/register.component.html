@@ -1,20 +1,20 @@
+<app-navbar ></app-navbar>
 <img src="assets/1.jpg" alt="" />
 <div class="testbox">
     <h1>Registration</h1>
-    <form (ngSubmit)="onSubmit()" #f="ngForm" *ngIf="pay">
+    <form (ngSubmit)="onSubmit()" #f="ngForm" >
         <hr>
-        <div class="accounttype">
-            <input type="radio" value="50.00" id="radioOne" name="account"  checked (input)="ChangeaccountChoice($event)" />
-            <label for="radioOne" class="radio"  chec>3 Month(30USD)</label>
-            <input type="radio" value="100.00" id="radioTwo" name="account"   (input)="ChangeaccountChoice($event)" />
-            <label for="radioTwo" class="radio">1 Year(100USD)</label>
-          </div>
           <hr>
           <div style="display: grid;"> 
+            <input type="text" name="FirstName"  ngModel   placeholder="First Name" />
+          <small *ngIf="!FirstNameValid" style="color: red;">Invalid First Name</small>
+          <input type="text" name="LastName"  ngModel  placeholder="Last Name" />
+          <small *ngIf="!LastNameValid" style="color: red;">Invalid Last Name</small>
           <input type="text" name="Email"  ngModel  #Email="ngModel" placeholder="Email" email required/>
           <small *ngIf="!emailValid" style="color: red;">Invalid email</small>
-          <input type="text" name="name"  #name="ngModel" ngModel placeholder="Name" />
+          <input type="text" name="name"  #name="ngModel" ngModel placeholder="UserName" />
           <small *ngIf="!nameValid" style="color: red;">Invalid Name</small>
+          <input type="url" name="compteFacebook" ngModel placeholder="optional : Facebook Account">
           <input type="password" name="password" #password="ngModel"  ngModel placeholder="Password" />
           <small *ngIf="!passwordvalid" style="color: red;">Invalid Password</small>
         </div>
@@ -25,7 +25,7 @@
             <input type="radio" value="Female" id="female" name="gender" (input)="ChangeGender($event)" />
             <label for="female" class="radio">Female</label>
         </div>
-        <button type="submit"   class="button">Register</button>
+        <button type="submit"  class="btn btn-primary">Register</button>
     </form>
     <div  id="payments"></div>
 </div>

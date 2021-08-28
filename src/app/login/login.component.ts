@@ -7,19 +7,32 @@ import {ApprenantService} from '../shared/apprenant.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  Erreur  : string= ''
+  choix ;
   constructor(private Apprenantservice : ApprenantService , private router : Router) { }
   user = {
-    email : 'dougi@d.com',
-    password : '12345678' 
+    email : '',
+    password : '' 
   };
   ngOnInit(): void {
   }
-  aas(){
-    
-    this.Apprenantservice.login(this.user)
-    //this.router.navigate(['/'])
-    
+  login(){
+    let res ;
+    if(!this.user.email || !this.user.password){
+      this.Erreur = "Invalid Email or Password"
+    }
+    else{
+      
+      this.Apprenantservice.login(this.user) 
+      setTimeout(() => {
+        res = this.Apprenantservice.getIsAuth()
+        if(!res){
+          this.Erreur = 'lk,lk'
+        }
+      }, 1000);
+    }
+
+
   }
 
 }

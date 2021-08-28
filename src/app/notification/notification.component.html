@@ -1,0 +1,16 @@
+<app-navbar  *ngIf="navbar"></app-navbar>
+<img class="back" src="assets/1.jpg" alt=""  *ngIf="navbar"/>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<div class="Message" id="js-timer"  *ngFor="let item of NotificationList">
+    <div class="Message-icon" >
+      <i class="fa fa-bell-o"></i>
+    </div>
+    <div class="Message-body">
+      <p></p>
+      <p class="u-italic">{{item.contenu}}</p>
+    </div>
+
+  
+  
+  </div>
+</main>

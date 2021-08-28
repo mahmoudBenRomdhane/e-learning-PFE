@@ -1,0 +1,79 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!courseAdded" >
+  <h1>Add Course</h1>
+  <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Name">
+          <small   style="color: red;">{{nameError}}</small>
+        </div>
+        </div>
+        <br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="height: 70px;">text description</span>
+            <small style="color: red;">{{textError}}</small>
+          </div>
+          <textarea class="form-control" formControlName="descrption_text" aria-label="With textarea"></textarea>
+        </div>
+      <div class="form-row">
+          <div class="form-group col-md-4">
+              <label for="inputState">difficulty</label>
+              <select formControlName="difficulty" class="form-control">
+                <option value="" disabled selected>choose ..</option>
+                <option *ngFor="let diff of difficulty"  [ngValue]="diff">{{diff}}</option>
+              </select>
+              <small style="color: red;">{{diffError}}</small>
+            </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">specialty</label>
+          <select formControlName="Speciality"  class="form-control">
+            <option value="" disabled selected>choose ..</option>
+            <option *ngFor="let spec of Speciality"  [ngValue]="spec">{{spec}}</option>
+          </select>
+          <small style="color: red;">{{specError}}</small>
+        </div>
+        <div class="form-group col-md-2">
+          <div class="form-group">
+              <label for="exampleFormControlFile1">Image</label>
+              <input type="file" #imageInput (change)="onFileSelect($event)" class="form-control-file" id="exampleFormControlFile1">
+              <small   style="color: red;">{{imageError}}</small>
+            </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="card"  *ngIf="imageData" style="width: 200px;height: 200px;">
+          <img [src]="imageData"  >
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</main>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"   *ngIf="courseAdded" >
+  <h1>Add Chapters</h1>
+  <form [formGroup]="form_2" (submit)="onSubmit_2()">
+      <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Chapter Name</label>
+            <input type="text" class="form-control" formControlName="chapterName" placeholder="Chapter Name">
+          </div>
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"  style="height: 70px;">text description</span>
+            </div>
+            <textarea class="form-control" formControlName="chapterDescrption" aria-label="With textarea"></textarea>
+          </div>  
+          <div class="form-group col-md-2">
+              <div class="form-group">
+                  <label for="exampleFormControlFile1">Video</label>
+                  <input type="file" #videoInput (change)="onVideoSelect($event)" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+
+</main>

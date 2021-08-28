@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApprenantService } from '../shared/apprenant.service';
 
@@ -10,7 +11,7 @@ import { ApprenantService } from '../shared/apprenant.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs : Subscription
-  constructor(private Apprenantservice : ApprenantService ) { }
+  constructor(private Apprenantservice : ApprenantService , private router: Router , private route : ActivatedRoute ) { }
   ngOnDestroy(): void {
     this.authListenerSubs.unsubscribe();
   }
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 mobilenavbar:boolean=false
 class="opensidear"
   ngOnInit(): void {
+    console.log(this.route.snapshot.routeConfig.component)
     this.userIsAuthenticated = this.Apprenantservice.getIsAuth();
     this.authListenerSubs = this.Apprenantservice
       .getauthStatusListener()

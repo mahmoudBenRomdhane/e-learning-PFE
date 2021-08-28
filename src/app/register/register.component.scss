@@ -11,7 +11,7 @@ img {
   .testbox {
     margin: 20px auto;
     width: 443px; 
-    height: 489px; 
+    height: 670px; 
     -webkit-border-radius: 8px/7px; 
     -moz-border-radius: 8px/7px; 
     border-radius: 8px/7px; 
@@ -85,7 +85,7 @@ img {
     input[type=radio]:checked + label:after {
         opacity: 1;
     }
-    input[type=text],input[type=password]{
+    input[type=text],input[type=password],input[type=url]{
         width: 400px; 
         height: 39px; 
         -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 

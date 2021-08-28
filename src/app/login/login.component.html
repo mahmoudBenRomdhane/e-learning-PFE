@@ -1,13 +1,21 @@
-<img src="assets/1.jpg" alt="" />
-<div class="testbox" style="margin-top: 200px;">
+<app-navbar></app-navbar>
+<img src="assets/1.jpg" alt=""   />
+<div class="testbox" style="margin-top: 150px;">
     <h1>LOG IN</h1>
     <form>
           <div style="display: grid;"> 
-          <input type="text" name="Email"  style="margin-top: 40px;" ngModel  #Email="ngModel" placeholder="Email" email required/>
-          <input type="password" name="password" #password="ngModel"  ngModel placeholder="Password" />
+          <input type="text"  name="Email" [(ngModel)]="user.email"  style="margin-top: 40px;" ngModel  #Email="ngModel" placeholder="Email" email required/>
+          <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel"  ngModel placeholder="Password" />
+          <label>Responsable</label>
+            <input type="checkbox" [(ngModel)]="choix" placeholder="djendfjer">
         </div>
-        <button type="submit"  (click)="aas()"  class="btn btn-primary">Register</button>
+        <button type="submit"  (click)="login()"  class="w-100 btn btn-lg btn-primary">Log in</button>
         <hr>
-        <p>not a member yet : <a href="#">sign In</a></p>
+        <p>What?! Not a member yet? <a role="button" routerLink="/register">Sign Up Now!</a></p>
     </form>
 </div>
+<div [hidden]="!Erreur"  class="alert" >
+    <span class="closebtn"  (click)="this.Erreur='' " >&times;</span> 
+    <strong>INFO</strong> {{Erreur}}
+  </div>
+

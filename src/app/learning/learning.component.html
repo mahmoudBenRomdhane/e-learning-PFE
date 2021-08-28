@@ -1,13 +1,120 @@
+<app-navbar ></app-navbar>
 <img  class="back"src="assets/11.jpg" alt="" />
-<div class="container" *ngIf="wait">
-  <div class="card" style="background-color: transparent; border: transparent; margin-left: 340px; margin-top: 140px;">
-    <h5 class="card-title" style="font-size: 100%; color: whitesmoke;">{{(currentChapter.chapitre_num)+1}}-{{currentChapter.nom}}</h5>
-<video   controls width="550" height="320" > 
-  <source  [src]="chapters[0].video">
+<video   *ngIf="wait" style="position: absolute;top: 25%;left: 30%;right: 70%;bottom: 50%;"  controls width="550" height="320" > 
+  <source   width="550" height="320" *ngIf="wait" src="{{currentChapter.video}}">
 </video>
-<p class="card-text" style="color: whitesmoke;">{{currentChapter.document_text}}</p>
-</div>
-<a  class="btn btn-primary"  *ngIf="(currentChapter.chapitre_num)!==0" (click)="Previous()" style="width: 120px;  float: left;"   >Previous</a>
-<a  class="btn btn-primary" *ngIf="(currentChapter.chapitre_num)!==(chapters.length)-1" (click)="next()"  style="width: 120px ; float: right;"  >Next</a>
-</div>
+<a  class="btn btn-primary"  *ngIf="!Next" (click)="next()"  style="width: 120px ; position: absolute;left: 77%;bottom: 50%;"  >Next</a>
+<a  class="btn btn-primary"   (click)="Previous()" style="width: 120px; position: absolute;right: 80%;bottom: 50%;"   >Previous</a>
+<div class="container-fluid">
+  <main role="main" class="pb-3 main-ctx" >
+      <div class="row" style="margin-top :500px;">
+          <div class="col-md-12 course-detail only-md-course-detail">
+              <div class="row">
+                  <div class="col-sm-4 text-center">
+                      <img src="{{course.image}}" width="240" height="135" alt="NodeJS &#x2013; The Complete Guide (incl. MVC, REST APIs, GraphQL)"  class="img-thumb-course"/>
+                  </div>
+                  <div class="col-sm-8">
+                      <table class="table table-striped table-bordered">
+                        <tr>
+                            <td>Chapter :</td>
+                            <td>{{currentChapter.nom}}</td>
+                        </tr>
+                          <tr>
+                              <td colspan="2"><b>{{course.nom}}</b></td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                  <p>description : {{course.descrption_text}}</p></td>
+                          </tr>
+                          <tr>
+                              <td>Created by</td>
+                              <td>Ahmed laajili</td>
+                          </tr>
+                          <tr>
+                              <td>difficulty</td>
+                              <td>{{course.difficulty}}</td>
+                          </tr>
+                          <tr>
+                            <td>Speciality</td>
+                            <td>{{course.Speciality}}</td>
+                          </tr>
+                          <tr >
+                              <td>Your Rate</td>
+                              <td>{{notee}}/5</td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <input  type="radio" style="visibility: hidden;" name="stars" id="star-null" />
+          <input  type="radio" (click)="put(1)" style="visibility: hidden;"  name="stars" id="star-1" />
+          <input   type="radio"  (click)="put(2)" style="visibility: hidden;" name="stars" id="star-2" />
+          <input   type="radio" (click)="put(3)"  style="visibility: hidden;"  name="stars" id="star-3" />
+          <input type="radio" (click)="put(4)" style="visibility: hidden;"  name="stars" id="star-4"  />
+          <input  type="radio" (click)="put(5)" style="visibility: hidden;"  name="stars" id="star-5" />
+          
+          <section >
+              <p>Rate the Course</p>
+            <label for="star-1">
+              <svg width="255" height="240" viewBox="0 0 51 48">
+                <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </label>
+            <label for="star-2">
+              <svg width="255" height="240" viewBox="0 0 51 48">
+                <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </label>
+            <label for="star-3">
+              <svg width="255" height="240" viewBox="0 0 51 48">
+                <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </label>
+            <label for="star-4">
+              <svg width="255" height="240" viewBox="0 0 51 48">
+                <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </label>
+            <label for="star-5">
+              <svg width="255" height="240" viewBox="0 0 51 48">
+                <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </label>
+            <label for="star-null">
+              Clear
+            </label>  
+          </section>
+      </div>
+      <div class="container-fluid">
+        <main role="main" class="pb-3 main-ctx" >
+            <div class="col-sm-4 text-center">
+                <p *ngIf="!showComments" >Show  comments <img  role="button"  (click)="showcomments()"  src="../../assets/arrow-down.svg" ></p>
+                <p *ngIf="showComments">Hide Comments <img role="button" (click)="showComments=false" src="../../assets/arrow-up.svg"></p>
+            </div>
+            </main>
+            </div>
+            <ol class="comments" *ngIf="showComments" id="comments">
+                <li class="comment" *ngFor="let item of avis">
+                  <img src="https://api.adorable.io/avatars/200/a@adorable.io.png" alt="" />
+                  <div class="comment-text">
+                    <div class="author">Mahmoud ben romdhane</div>
+                    <p>{{item}}</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="container" >
+                <div class="input-group" >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Avis</span>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="votreAvis" style="height: 40PX;"  aria-label="With textarea"></textarea>
+                    <button type="button" class="btn btn-primary" (click)="putAvis()" >Post</button>
+                  </div>
+                  
+                  <small  style="margin-left: 100px; color: red;">you can 't send an empty question</small>
+                  
+                </div>
+      
 
+
+      

@@ -1,0 +1,26 @@
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">
+            telephone number</th>
+        <th scope="col">specialty</th>
+        <th scope="col">Registration date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of responsables">
+        <th scope="row">{{item.nom}}  {{item.prenom}}</th>
+        <td>{{item.email}}</td>
+        <td>{{item.numTelephone}}</td>
+        <td>{{item.specialite}}</td>
+        <td>{{item.dateInscrption}}</td>
+        <td><img role="button" (click)="OnDelete(item._id)" src="../../../../assets/delete.svg"></td>
+      </tr>
+    </tbody>
+  </table>
+</main>

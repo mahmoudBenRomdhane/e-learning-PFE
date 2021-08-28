@@ -1,0 +1,15 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <form #f="ngForm"> 
+        <label for="">Quiz Name</label>
+        <input type="text" name="Name" class="form-control" ngModel value="{{quiz.name}}" placeholder="Name">
+        <label for="">Quiz Duration</label>
+        <input type="number" name="duree" class="form-control" ngModel value="{{quiz.time}}"  placeholder="Duration">
+        <label>Quiz Speciality</label>
+        <input type="text" class="form-control"  disabled value="{{quiz.Speciality}}">
+        <label>Quiz difficulty</label>
+        <input type="text" class="form-control" value="{{quiz.difficulty}}" disabled>
+        <br>
+        <button (click)="submit()" class="btn btn-primary">Save</button>
+    </form>
+
+</main>

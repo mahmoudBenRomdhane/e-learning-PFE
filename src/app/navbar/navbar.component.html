@@ -9,11 +9,14 @@
     </li>
     <li *ngIf="userIsAuthenticated">Home</li>
     <li *ngIf="userIsAuthenticated" routerLink="/courses">Courses</li>
-    <li *ngIf="userIsAuthenticated">Forum</li>
-    <li *ngIf="userIsAuthenticated" routerLink="/quizes">Quiz</li>
-    <li *ngIf="userIsAuthenticated">About us</li>
-    <li *ngIf="!userIsAuthenticated">login</li>
-    <li *ngIf="userIsAuthenticated" (click)="onLogOut()" >logOut</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/forumList">Forum</li>
+    <li *ngIf="userIsAuthenticated"  routerLink="/quizes">Quiz</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/notification">Notification</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/profile">Profile</li>
+    <li *ngIf="userIsAuthenticated" routerLink="/askQuestion">Ask</li>
+    <li *ngIf="!userIsAuthenticated" routerLink="/login">login</li>
+    <li *ngIf="!userIsAuthenticated" routerLink="/WorkWithUS">Work with us</li>
+    <li *ngIf="userIsAuthenticated"  (click)="onLogOut()" >logOut</li>
   </ul>
 </header>
 <aside *ngIf="mobilenavbar">

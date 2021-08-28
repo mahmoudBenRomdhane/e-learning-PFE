@@ -1,0 +1,62 @@
+
+<form id="survey-form" class="form-outer" [formGroup]="form" (submit)="onSubmit()" >
+    <h1>Fill in</h1>
+<div class="rowTab">
+<div class="labels">
+<label >Facebook Account </label>
+</div>
+<div class="rightTab">
+<input autofocus="" type="text" formControlName="Facebook" class="input-field" placeholder="https://facebook.com/userName" >
+</div>
+</div>
+<div class="rowTab">
+    <div class="labels">
+    <label >GitHub Account </label>
+    </div>
+    <div class="rightTab">
+    <input autofocus="" type="text" formControlName="GitHub" class="input-field" placeholder="https://GitHub.com/userName" >
+    </div>
+    </div>
+    <div class="rowTab">
+        <div class="labels">
+        <label >linkedin Account </label>
+        </div>
+        <div class="rightTab">
+        <input autofocus="" type="text" formControlName="linkedin" class="input-field" placeholder="https://linkedin.com/userName" >
+        </div>
+        </div>
+        <div class="rowTab">
+            <div class="labels">
+            <label >address </label>
+            </div>
+            <div class="rightTab">
+            <input autofocus="" type="text" formControlName="address" class="input-field" placeholder="address" >
+            </div>
+            </div>
+            <div class="rowTab">
+                <div class="labels">
+                <label >professionalExperience</label>
+                </div>
+                <div class="rightTab">
+                <input autofocus=""  type="text" formControlName="professionalExperience" class="input-field-field" placeholder="talk about your professionalExperience" >
+                </div>
+                </div>
+                <div class="rowTab">
+                    <div class="labels">
+                    <label >skills</label>
+                    </div>
+                    <div class="rightTab">
+                    <input autofocus=""  type="text" formControlName="skills" class="input-field-field" placeholder="talk about your skills" >
+                    </div>
+                    </div>
+
+<div class="rowTab">
+    <div class="labels">
+        <label>Image</label>
+    </div>
+    <div class="rightTab">
+        <input type="file"(change)="onFileSelect($event)" >
+    </div>
+</div>
+<button  class="submit" type="submit">Submit</button>
+</form>

@@ -1,0 +1,69 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"  *ngIf="!quizDon" >
+    <h1>Add Quiz</h1>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4" >Quiz Name</label>
+          <input type="text"  [(ngModel)]="name" class="form-control"  placeholder="Name">
+          <small style="color: red;">{{errors.name}}</small>
+        </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">Speciality</label>                   
+            <select  class="form-control" [(ngModel)]="Speciality" >
+              <option value="" disabled selected>choose ..</option>
+              <option>Web Development</option>
+            <option>Data Science</option>
+<option>Mobile Development</option>
+<option>Programming Languages</option>
+<option>Game Development</option>
+<option>NetWork And Security</option>
+<option>Busines Intelligence</option>
+<option>Data Analysics</option>
+            </select>
+            <small style="color: red;">{{errors.spec}}</small>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">difficulty</label>
+            <select  class="form-control" [(ngModel)]="difficulty">
+              <option value="" disabled selected>choose ..</option>
+              <option>Easy</option>
+                 <option>Meduim</option>
+                <option>Hard</option>
+            </select>
+            <small style="color: red;">{{errors.diff}}</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">duration</label>
+            <input type="number" class="form-control"  [(ngModel)]="time" placeholder="duration">
+            <small style="color: red;">{{errors.dur}}</small>
+          </div>
+          <br>
+          <button class="btn btn-primary" (click)="submit()" >Add</button>
+</main>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"  *ngIf="quizDon" >
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4" >question</label>
+          <input type="text" [(ngModel)]="q" class="form-control"  placeholder="question">
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4"  >correct answer</label>
+              <input type="text"  [(ngModel)]="correct" class="form-control"  placeholder="correct answer">
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Wrong Answer</label>
+                  <input type="text"  [(ngModel)]="Wrong" class="form-control"  placeholder="Wrong Answer">
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Wrong Answer 2</label>
+                      <input type="text"  [(ngModel)]="Wrong2" class="form-control"  placeholder="Wrong Answer 2">
+                    </div>
+                    </div>
+                    <button (click)="addQuestion()" class="btn btn-primary">Add</button>
+</main>

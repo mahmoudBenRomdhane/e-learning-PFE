@@ -1,0 +1,114 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"  *ngIf="this.userIsAuthenticated">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">E-Learning</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" role="button"  (click)="logout()">Sign out</a>
+      </li>
+    </ul>
+  </header>
+  
+  <div class="container-fluid" *ngIf="this.userIsAuthenticated" >
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="#">
+                <span data-feather="home"><img src="../../../assets/home.svg"></span>
+                Dashboard
+              </a>
+            </li> 
+            <li class="nav-item" role="button">
+              <a class="nav-link  "  (click)="Gerercourses=true" >
+                <span data-feather="file"><img src="../../../assets/arrow-down.svg"></span>
+                Courses
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="Gerercourses" >
+              <a class="nav-link " routerLink="MyCourses"  >
+                <span style="visibility: hidden;">ce</span><span data-feather="users"><img src="../../../assets/video.svg"></span>
+                courses list
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="Gerercourses"  >
+              <a class="nav-link" routerLink="addCourse"  >
+                <span style="visibility: hidden;">ce</span><span data-feather="users"><img src="../../../assets/plus.svg"></span>
+                add  course
+              </a>
+            </li>
+            <li class="nav-item " role="button" (click)="GererQuiz=true">
+              <a class="nav-link active"  routerLink="Quiz"  >
+                <span data-feather="shopping-cart" ><img src="../../../assets/arrow-down-right.svg"></span>
+                Quiz 
+              </a>
+            </li>
+            <li class="nav-item " *ngIf="GererQuiz">
+              <a class="nav-link"  routerLink="Quiz" >
+                <span style="visibility: hidden;">ce</span><span data-feather="shopping-cart" ><img src="../../../assets/play.svg"></span>
+                Quiz List
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="GererQuiz">
+              <a class="nav-link" role="button" routerLink="AjouterQuiz"  >
+                <span style="visibility: hidden;">ce</span><span data-feather="bar-chart-2"><img src="../../../assets/plus-square.svg"></span>
+                add  quiz
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >
+                <span data-feather="layers"><img src="../../../assets/bell.svg"></span>
+                notification
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="ResponsableProfile">
+                  <span data-feather="layers"><img src="../../../assets/user.svg"></span>
+                 Profile
+                </a>
+              </li>
+          </ul>
+  
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle"><img src="../../../assets/plus-circle.svg"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"><img src="../../../assets/file-text.svg"></span>
+                Current month
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"><img src="../../../assets/file-text.svg"></span>
+                Last quarter
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"><img src="../../../assets/file-text.svg"></span>
+                Social engagement
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"><img src="../../../assets/file-text.svg"></span>
+                Year-end sale
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    
+
+    </div>
+</div>
+<router-outlet></router-outlet>

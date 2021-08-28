@@ -10,4 +10,10 @@ export class ChapterService {
   getChapters(_id:string){
     return this.http.get('http://localhost:3000/CourseChapters/'+_id)
   }
+  addChapter(data){
+    return this.http.post('http://localhost:3000/addChapter',data)     
+ }
+ deleteChapter(_id:string){
+  return this.http.delete('http://localhost:3000/deleteChapter/'+_id)
+}
 }

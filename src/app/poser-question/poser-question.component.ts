@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApprenantService } from '../shared/apprenant.service';
 import {ForumService} from '../shared/forum.service'
 
 @Component({
@@ -11,9 +13,9 @@ export class PoserQuestionComponent implements OnInit {
   validation : Boolean = false ;
   question = {
     contenu : '',
-    id_apprenant : '608d99e6beb87400203e2d50'
+    id_apprenant : this.Apprenantservice.getId()
   }
-  constructor(private ForumService : ForumService ) { }
+  constructor(private ForumService : ForumService  , private Apprenantservice : ApprenantService , private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,7 @@ export class PoserQuestionComponent implements OnInit {
       .subscribe(res=>{
         console.log(res)
       })
+      this.router.navigate([''])
     }
   }
 

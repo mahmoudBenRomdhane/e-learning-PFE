@@ -11,7 +11,7 @@ img {
 .testbox {
   margin: 20px auto;
   width: 443px; 
-  height: 321px; 
+  height: 341px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -150,5 +150,26 @@ img {
       -moz-box-shadow: none; 
       box-shadow: none;
       
+    }
+}
+.alert {
+  width: 40%;
+  margin-left: 500px;
+  padding: 20px ;
+  background-color :#f44336;
+  color: white;
+  .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+      color: black;
     }
 }
